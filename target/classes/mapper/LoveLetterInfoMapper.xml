@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.laoshe.mapper.LoveLetterInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.laoshe.entity.LoveLetterInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="block_id" property="blockId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
+    <result column="love_content" property="loveContent" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
+    <result column="is_chain" property="isChain" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="chain_time" property="chainTime" jdbcType="TIMESTAMP" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, block_id, user_id, user_sex, love_content, longitude, latitude, is_chain, create_time, 
+    chain_time, address
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from love_letter_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from love_letter_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.laoshe.entity.LoveLetterInfo" >
+    insert into love_letter_info (id, block_id, user_id, 
+      user_sex, love_content, longitude, 
+      latitude, is_chain, create_time, 
+      chain_time, address)
+    values (#{id,jdbcType=BIGINT}, #{blockId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{userSex,jdbcType=VARCHAR}, #{loveContent,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=VARCHAR}, #{isChain,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{chainTime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.laoshe.entity.LoveLetterInfo" >
+    insert into love_letter_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="blockId != null" >
+        block_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+      <if test="loveContent != null" >
+        love_content,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="isChain != null" >
+        is_chain,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="chainTime != null" >
+        chain_time,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="blockId != null" >
+        #{blockId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="loveContent != null" >
+        #{loveContent,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="isChain != null" >
+        #{isChain,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chainTime != null" >
+        #{chainTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.laoshe.entity.LoveLetterInfo" >
+    update love_letter_info
+    <set >
+      <if test="blockId != null" >
+        block_id = #{blockId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="loveContent != null" >
+        love_content = #{loveContent,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="isChain != null" >
+        is_chain = #{isChain,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chainTime != null" >
+        chain_time = #{chainTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.laoshe.entity.LoveLetterInfo" >
+    update love_letter_info
+    set block_id = #{blockId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=VARCHAR},
+      love_content = #{loveContent,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      is_chain = #{isChain,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      chain_time = #{chainTime,jdbcType=TIMESTAMP},
+      address = #{address,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
