@@ -12,9 +12,9 @@ public class LoveLetterInfo {
     private String userSex;
 
     private String loveContent;
-
+    //经度
     private String longitude;
-
+    //维度
     private String latitude;
 
     private String isChain;

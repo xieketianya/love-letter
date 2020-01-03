@@ -12,8 +12,10 @@ public class UserInfo {
     private String passward;
 
     private String userMobile;
+    
+    private String picName;
 
-    private String profession;
+	private String profession;
 
     private String company;
 
@@ -66,7 +68,13 @@ public class UserInfo {
     public void setUserMobile(String userMobile) {
         this.userMobile = userMobile == null ? null : userMobile.trim();
     }
+    public String getPicName() {
+		return picName;
+	}
 
+	public void setPicName(String picName) {
+		this.picName = picName;
+	}
     public String getProfession() {
         return profession;
     }

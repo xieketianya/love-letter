@@ -7,6 +7,7 @@
     <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
     <result column="passward" property="passward" jdbcType="VARCHAR" />
     <result column="user_mobile" property="userMobile" jdbcType="VARCHAR" />
+    <result column="pic_name" property="picName" jdbcType="VARCHAR" />
     <result column="profession" property="profession" jdbcType="VARCHAR" />
     <result column="company" property="company" jdbcType="VARCHAR" />
     <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
@@ -16,7 +17,7 @@
     <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, nick_name, passward, user_mobile, profession, company, user_sex, hometown, 
+    id, user_id, nick_name,pic_name, passward, user_mobile, profession, company, user_sex, hometown, 
     introduction, create_time, modify_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
@@ -31,12 +32,12 @@
   </delete>
   <insert id="insert" parameterType="com.laoshe.entity.UserInfo" >
     insert into user_info (id, user_id, nick_name, 
-      passward, user_mobile, profession, 
+      passward, user_mobile,pic_name, profession, 
       company, user_sex, hometown, 
       introduction, create_time, modify_time
       )
     values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{passward,jdbcType=VARCHAR}, #{userMobile,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR}, 
+      #{passward,jdbcType=VARCHAR}, #{userMobile,jdbcType=VARCHAR},#{picName,jdbcType=VARCHAR}, #{profession,jdbcType=VARCHAR}, 
       #{company,jdbcType=VARCHAR}, #{userSex,jdbcType=VARCHAR}, #{hometown,jdbcType=VARCHAR}, 
       #{introduction,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
       )
@@ -58,6 +59,9 @@
       </if>
       <if test="userMobile != null" >
         user_mobile,
+      </if>
+      <if test="picName != null" >
+        pic_name,
       </if>
       <if test="profession != null" >
         profession,
@@ -97,6 +101,9 @@
       <if test="userMobile != null" >
         #{userMobile,jdbcType=VARCHAR},
       </if>
+       <if test="picName != null" >
+        #{picName,jdbcType=VARCHAR},
+      </if>
       <if test="profession != null" >
         #{profession,jdbcType=VARCHAR},
       </if>
@@ -135,6 +142,9 @@
       <if test="userMobile != null" >
         user_mobile = #{userMobile,jdbcType=VARCHAR},
       </if>
+      <if test="picName != null" >
+        pic_name = #{picName,jdbcType=VARCHAR},
+      </if>
       <if test="profession != null" >
         profession = #{profession,jdbcType=VARCHAR},
       </if>
@@ -165,6 +175,7 @@
       nick_name = #{nickName,jdbcType=VARCHAR},
       passward = #{passward,jdbcType=VARCHAR},
       user_mobile = #{userMobile,jdbcType=VARCHAR},
+      pic_name = #{picName,jdbcType=VARCHAR},
       profession = #{profession,jdbcType=VARCHAR},
       company = #{company,jdbcType=VARCHAR},
       user_sex = #{userSex,jdbcType=VARCHAR},
