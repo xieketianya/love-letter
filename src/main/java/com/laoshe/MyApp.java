@@ -30,7 +30,14 @@ public class MyApp {
 		registrationBean.setFilter(filter);
 		// 设置（模糊）匹配的url
 		List<String> urlPatterns = new ArrayList();
-		urlPatterns.add("/admin/loginout");
+		urlPatterns.add("/user/loginout");
+		urlPatterns.add("/user/query-self");
+		urlPatterns.add("/user/friend-info");
+		urlPatterns.add("/love/save-to-chain");
+		urlPatterns.add("/love/save");
+		urlPatterns.add("/love/query-not-chain");
+		urlPatterns.add("/love/query-nearby");
+		urlPatterns.add("/love/query-self");
 		registrationBean.setUrlPatterns(urlPatterns);
 
 		registrationBean.setOrder(1);

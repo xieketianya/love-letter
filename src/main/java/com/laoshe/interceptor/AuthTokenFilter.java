@@ -13,13 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.laoshe.entity.UserInfo;
 import com.laoshe.mapper.UserInfoMapper;
-import com.laoshe.security.DesUtil;
-import com.laoshe.service.RedisService;
+import com.laoshe.utils.RedisUtil;
 
 @Component
 public class AuthTokenFilter implements Filter {
@@ -31,7 +29,7 @@ public class AuthTokenFilter implements Filter {
 	private UserInfoMapper userMapper;
 	
 	@Autowired
-	RedisService redisService;
+	RedisUtil redisService;
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub

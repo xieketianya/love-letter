@@ -15,7 +15,6 @@ import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
-import com.laoshe.service.RedisService;
 @Service
 public class SendMsgUtil {
 	
@@ -34,7 +33,7 @@ public class SendMsgUtil {
 	public String templateCode;
 	
 	@Autowired
-	private RedisService redisService;
+	private RedisUtil redisService;
 	
     public  Boolean SendMsg(String mobile) {
      // 创建DefaultAcsClient实例并初始化

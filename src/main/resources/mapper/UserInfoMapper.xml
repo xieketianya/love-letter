@@ -32,6 +32,12 @@
     from user_info
     where user_mobile = #{userMobile,jdbcType=VARCHAR}
   </select>
+  <select id="queryUserData" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where 1=1 order by create_time DESC limit 100;
+  </select>
   <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

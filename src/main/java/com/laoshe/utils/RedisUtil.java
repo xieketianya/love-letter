@@ -1,9 +1,13 @@
-package com.laoshe.service;
+package com.laoshe.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.geo.Circle;
+import org.springframework.data.geo.GeoResults;
+import org.springframework.data.redis.connection.RedisGeoCommands;
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -14,8 +18,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Administrator on 2017/12/1.
  */
-@Service
-public class RedisService {
+@Component
+public class RedisUtil {
 
     @Autowired
     private RedisTemplate redisTemplate;
@@ -202,5 +206,14 @@ public class RedisService {
     public Set<Object> rangeByScore(String key,double scoure,double scoure1){
         ZSetOperations<String, Object> zset = redisTemplate.opsForZSet();
         return zset.rangeByScore(key, scoure, scoure1);
+    }
+    //经纬度操作
+    
+    public Long addToGeo(String key,RedisGeoCommands.GeoLocation<String> getLocation){
+    	return redisTemplate.opsForGeo().geoAdd(key, getLocation);
+    }
+    
+    public GeoResults<RedisGeoCommands.GeoLocation<String>> distant(String key, Circle within,RedisGeoCommands.GeoRadiusCommandArgs args){
+    	return redisTemplate.opsForGeo().geoRadius(key, within,args);
     }
 }

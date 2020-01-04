@@ -24,6 +24,18 @@
     from love_letter_info
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="com.laoshe.request.LoveLetterByUser" >
+    select 
+    <include refid="Base_Column_List" />
+    from love_letter_info
+    where user_id = #{userId,jdbcType=VARCHAR} and is_chain = #{isChain,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUser" resultMap="BaseResultMap" parameterType="com.laoshe.request.QuerySelfLoveLetterReq" >
+    select 
+    <include refid="Base_Column_List" />
+    from love_letter_info
+    where user_id = #{userId,jdbcType=VARCHAR} and is_chain = #{isChain,jdbcType=VARCHAR} limit #{page,jdbcType=VARCHAR},#{rows,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from love_letter_info
     where id = #{id,jdbcType=BIGINT}
@@ -38,7 +50,7 @@
       #{latitude,jdbcType=VARCHAR}, #{isChain,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{chainTime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.laoshe.entity.LoveLetterInfo" >
+  <insert id="insertSelective" useGeneratedKeys = "true" keyProperty = "id" parameterType="com.laoshe.entity.LoveLetterInfo" >
     insert into love_letter_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
