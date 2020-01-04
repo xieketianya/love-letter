@@ -41,7 +41,7 @@ public class UtilsController {
     	if (res) {
     		return LaosheResponse.success("发送成功");
 		}else{
-			return LaosheResponse.error("发送失败，请重试");
+			return LaosheResponse.error(CodeSet.SYSTEM_ERR_CODE,"发送失败，请重试");
 		}
     }
     @ResponseBody

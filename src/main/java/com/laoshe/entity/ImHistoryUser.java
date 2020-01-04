@@ -2,6 +2,9 @@ package com.laoshe.entity;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class ImHistoryUser {
     private Long id;
 
@@ -41,5 +44,9 @@ public class ImHistoryUser {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }
 }

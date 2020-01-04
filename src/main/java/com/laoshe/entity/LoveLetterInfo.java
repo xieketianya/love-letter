@@ -2,6 +2,9 @@ package com.laoshe.entity;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class LoveLetterInfo {
     private Long id;
 
@@ -111,5 +114,9 @@ public class LoveLetterInfo {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
+    }
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }
 }

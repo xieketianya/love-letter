@@ -1,11 +1,9 @@
-package com.laoshe.entity;
-
-import java.util.Date;
+package com.laoshe.request;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-public class UserInfo {
+public class UserInfoModifyReq {
     private Long id;
 
     private String userId;
@@ -28,11 +26,7 @@ public class UserInfo {
 
     private String introduction;
 
-    private Date createTime;
-
-    private Date modifyTime;
-
-    public Long getId() {
+	public Long getId() {
         return id;
     }
 
@@ -116,22 +110,6 @@ public class UserInfo {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction == null ? null : introduction.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
     }
     @Override
     public String toString() {

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 import com.laoshe.entity.UserInfo;
 import com.laoshe.mapper.UserInfoMapper;
 import com.laoshe.security.DesUtil;
+import com.laoshe.service.RedisService;
 
 @Component
 public class AuthTokenFilter implements Filter {
@@ -29,9 +30,8 @@ public class AuthTokenFilter implements Filter {
 	@Autowired
 	private UserInfoMapper userMapper;
 	
-	@Value("${menu.img.ip}")
-	private String ip;
-
+	@Autowired
+	RedisService redisService;
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
@@ -43,21 +43,16 @@ public class AuthTokenFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		logger.info("拦截到的请求信息:{}",req.getRequestURI()+",token:"+req.getHeader("token"));
 		String token = req.getHeader("token");
-//		UserInfo user = userMapper.selectByToken(token);
-//		if (user != null) {
-//			logger.info("用户登录成功：{}",user.getUserId());
-//			user.setUserPic("http://"+ip+"/"+user.getUserPic());
-//			try {
-//				user.setSecretKey(DesUtil.decrypt(user.getSecretKey()));
-//			} catch (Exception e) {
-//				logger.error("秘钥解密失败", e);
-//			}
-//			request.setAttribute("userInfo", user);
-//			chain.doFilter(request, response);
-//		}else {
-//			logger.info("登录态已过期！");
-//			chain.doFilter(request, response);
-//		}
+		String userId = redisService.get(token);
+		UserInfo user = userMapper.selectByUserId(userId);
+		if (user != null) {
+			logger.info("用户登录成功：{}",user);
+			request.setAttribute("userInfo", user);
+			chain.doFilter(request, response);
+		}else {
+			logger.info("登录态已过期！");
+			chain.doFilter(request, response);
+		}
 		
 	}
 

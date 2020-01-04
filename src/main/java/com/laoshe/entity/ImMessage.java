@@ -2,6 +2,9 @@ package com.laoshe.entity;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class ImMessage {
     private Long id;
 
@@ -71,5 +74,9 @@ public class ImMessage {
 
     public void setSendTime(Date sendTime) {
         this.sendTime = sendTime;
+    }
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }
 }

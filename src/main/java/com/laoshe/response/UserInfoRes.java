@@ -1,11 +1,11 @@
-package com.laoshe.entity;
+package com.laoshe.response;
 
 import java.util.Date;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-public class UserInfo {
+public class UserInfoRes {
     private Long id;
 
     private String userId;
@@ -31,8 +31,20 @@ public class UserInfo {
     private Date createTime;
 
     private Date modifyTime;
+    
+    private String token;
+    //1.old 2new
+    private String isNew = "1";
 
-    public Long getId() {
+	public String getIsNew() {
+		return isNew;
+	}
+
+	public void setIsNew(String isNew) {
+		this.isNew = isNew;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -133,7 +145,14 @@ public class UserInfo {
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
     }
-    @Override
+    public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+	@Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }

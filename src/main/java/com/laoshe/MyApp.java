@@ -30,7 +30,7 @@ public class MyApp {
 		registrationBean.setFilter(filter);
 		// 设置（模糊）匹配的url
 		List<String> urlPatterns = new ArrayList();
-		//urlPatterns.add("/admin/loginout");
+		urlPatterns.add("/admin/loginout");
 		registrationBean.setUrlPatterns(urlPatterns);
 
 		registrationBean.setOrder(1);

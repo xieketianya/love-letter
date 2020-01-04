@@ -14,27 +14,18 @@ public class UserLoginReq implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -2091010431291152961L;
-	@NotBlank(message = "密码不能为空")
-	private String userPassword;
+
 	@NotBlank(message = "用户名不能为空")
-	private String userPhone;
-	
+	private String userMobile;
+	@NotBlank(message = "验证码不能为空")
 	private String verifyCode;
-	
-	public String getUserPassword() {
-		return userPassword;
+
+	public String getUserMobile() {
+		return userMobile;
 	}
 
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
-	}
-
-	public String getUserPhone() {
-		return userPhone;
-	}
-
-	public void setUserPhone(String userPhone) {
-		this.userPhone = userPhone;
+	public void setUserMobile(String userMobile) {
+		this.userMobile = userMobile;
 	}
 	public String getVerifyCode() {
 		return verifyCode;

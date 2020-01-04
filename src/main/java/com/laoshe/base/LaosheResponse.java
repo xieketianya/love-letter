@@ -31,11 +31,26 @@ public class LaosheResponse<T> implements Serializable{
 		result.setRetMsg(msg);
 		return result;
 	}
-	public static LaosheResponse error(String msg){
+	public static LaosheResponse<Object> successData(Object object){
+		LaosheResponse<Object> result = new LaosheResponse<Object>();
+		result.setSuccess(true);
+		result.setRetCode(CodeSet.SUCCESS_CODE);
+		result.setData(object);
+		result.setRetMsg("处理成功");
+		return result;
+	}
+	public static LaosheResponse error(String retCode,String retMsg){
 		LaosheResponse result = new LaosheResponse();
 		result.setSuccess(false);
-		result.setRetCode(CodeSet.SYSTEM_ERR_CODE);
-		result.setRetMsg(msg);
+		result.setRetCode(retCode);
+		result.setRetMsg(retMsg);
+		return result;
+	}
+	public static LaosheResponse verifyCodeError(){
+		LaosheResponse result = new LaosheResponse();
+		result.setSuccess(false);
+		result.setRetCode(CodeSet.VERIFY_CODE_ERROR);
+		result.setRetMsg("验证码错误");
 		return result;
 	}
 	public String getRetCode() {
