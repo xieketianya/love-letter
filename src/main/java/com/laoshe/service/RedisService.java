@@ -65,6 +65,15 @@ public class RedisService {
         return result;
     }
     /**
+     * 设置时效时间
+     * @param key
+     * @param expireTime
+     * @return
+     */
+    public void setExpireTime(final String key,Long expireTime) {
+        redisTemplate.expire(key, expireTime, TimeUnit.SECONDS);
+    }
+    /**
      * 批量删除对应的value
      * @param keys
      */
