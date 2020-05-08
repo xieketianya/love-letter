@@ -273,7 +273,7 @@
 		<dependency>
 		    <groupId>org.java-websocket</groupId>
 		    <artifactId>Java-WebSocket</artifactId>
-		    <version>1.3.8</version>
+		    <version>1.5.0</version>
 		    <scope>system</scope>
 		    <systemPath>${pom.basedir}/src/main/resources/lib/Java-WebSocket-1.3.8.jar</systemPath>
 		</dependency>
